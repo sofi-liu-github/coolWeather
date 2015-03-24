@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.coolweather.model.City;
+import com.example.coolweather.model.Country;
 import com.example.coolweather.model.Province;
 
 import android.content.ContentValues;
@@ -91,5 +92,35 @@ public class coolweatherDB {
             cursor.close();
         }
         return list;
+    }
+
+    // 存乡镇信息
+    public void saveCountry(Country country) {
+        if (country != null) {
+            ContentValues cv = new ContentValues();
+            cv.put("country_id", country.getId());
+            cv.put("country_name", country.getCountryName());
+            cv.put("country_code", country.getCountryCode());
+            cv.put("city_id", country.getCityId());
+            db.insert("CREATE_COUNTRY", null, cv);
+        }
+    }
+
+    // 读取乡镇信息
+    public List<Country> loadCountries() {
+        List<Country> list = new ArrayList<Country>();
+        Cursor cursor = db.query("CREATE_COUNTRY", null, null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Country country = new Country();
+                country.setId(cursor.getInt(cursor.getColumnIndex("country_id")));
+                country.setCityId(cursor.getInt(cursor.getColumnIndex("city_id")));
+                country.setCountryCode(cursor.getString(cursor.getColumnIndex("country_code")));
+                country.setCountryName(cursor.getString(cursor.getColumnIndex("country_name")));
+                list.add(country);
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        return null;
     }
 }

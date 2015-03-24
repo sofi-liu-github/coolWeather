@@ -23,19 +23,19 @@ public class Country {
         this.mCountryId = id;
     }
 
-    public String getProvinceName() {
+    public String getCountryName() {
         return mCountryName;
     }
 
-    public String getProvinceCode() {
+    public String getCountryCode() {
         return mCountryCode;
     }
 
-    public void setProvinceName(String name) {
+    public void setCountryName(String name) {
         this.mCountryName = name;
     }
 
-    public void setProvinceCode(String code) {
+    public void setCountryCode(String code) {
         this.mCountryCode = code;
     }
 
