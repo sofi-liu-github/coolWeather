@@ -36,7 +36,7 @@ public class coolweatherDB {
         return mCoolweatherDB;
     }
 
-    // 存储省份信息
+    // 存储省份信息 insert()
     public void saveProvince(Province province) {
         if (province != null) {
             ContentValues cv = new ContentValues();
@@ -46,7 +46,7 @@ public class coolweatherDB {
         }
     }
 
-    // 读取省份信息
+    // 读取省份信息 query()
     public List<Province> loadProvinces() {
         List<Province> list = new ArrayList<Province>();
         Cursor cursor = db.query("CREATE_PROVINCE", null, null, null, null, null, null);
@@ -65,7 +65,7 @@ public class coolweatherDB {
         return list;
     }
 
-    // 存城市信息
+    // 存城市信息 insert()
     public void saveCity(City city) {
         if (city != null) {
             ContentValues cv = new ContentValues();
@@ -76,7 +76,7 @@ public class coolweatherDB {
         }
     }
 
-    // 读取城市信息
+    // 读取城市信息 query()
     public List<City> loadCities() {
         List<City> list = new ArrayList<City>();
         Cursor cursor = db.query("CREATE_CITY", null, null, null, null, null, null);
@@ -94,7 +94,7 @@ public class coolweatherDB {
         return list;
     }
 
-    // 存乡镇信息
+    // 存乡镇信息 insert()
     public void saveCountry(Country country) {
         if (country != null) {
             ContentValues cv = new ContentValues();
@@ -106,7 +106,7 @@ public class coolweatherDB {
         }
     }
 
-    // 读取乡镇信息
+    // 读取乡镇信息 query()
     public List<Country> loadCountries() {
         List<Country> list = new ArrayList<Country>();
         Cursor cursor = db.query("CREATE_COUNTRY", null, null, null, null, null, null);
