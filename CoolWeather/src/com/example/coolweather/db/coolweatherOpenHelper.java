@@ -1,3 +1,4 @@
+//创建三张表
 package com.example.coolweather.db;
 
 import android.content.Context;
@@ -8,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class coolweatherOpenHelper extends SQLiteOpenHelper {
 
     private Context context;
-    // 建省表
+    // 建省表，注意表名province/city/country
     public static final String CREATE_PROVINCE = "create table province (" + "province_id integer primary key autoincrement,"
             + "province_name text," + "province_code text)";
     // 建市表

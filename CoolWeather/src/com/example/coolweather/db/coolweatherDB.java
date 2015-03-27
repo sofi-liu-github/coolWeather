@@ -1,3 +1,4 @@
+//将常用数据库操作封装起来，如省份信息的存储，市信息的存储，县信息的存储
 package com.example.coolweather.db;
 
 import java.util.ArrayList;
@@ -42,14 +43,14 @@ public class coolweatherDB {
             ContentValues cv = new ContentValues();
             cv.put("mProvinceName", province.getProvinceName());
             cv.put("mProvinceCode", province.getProvinceCode());
-            db.insert("CREATE_PROVINCE", null, cv);
+            db.insert("province", null, cv);
         }
     }
 
     // 读取省份信息 query()
     public List<Province> loadProvinces() {
         List<Province> list = new ArrayList<Province>();
-        Cursor cursor = db.query("CREATE_PROVINCE", null, null, null, null, null, null);
+        Cursor cursor = db.query("province", null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
             do {
                 Province province = new Province();
@@ -72,14 +73,14 @@ public class coolweatherDB {
             cv.put("city_name", city.getCityName());
             cv.put("city_code", city.getCityCode());
             cv.put("province_id", city.getProvinceId());
-            db.insert("CREATE_CITY", null, cv);
+            db.insert("city", null, cv);
         }
     }
 
     // 读取城市信息 query()
-    public List<City> loadCities() {
+    public List<City> loadCities(int provinceId) {
         List<City> list = new ArrayList<City>();
-        Cursor cursor = db.query("CREATE_CITY", null, null, null, null, null, null);
+        Cursor cursor = db.query("city", null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
             do {
                 City city = new City();
@@ -102,14 +103,14 @@ public class coolweatherDB {
             cv.put("country_name", country.getCountryName());
             cv.put("country_code", country.getCountryCode());
             cv.put("city_id", country.getCityId());
-            db.insert("CREATE_COUNTRY", null, cv);
+            db.insert("country", null, cv);
         }
     }
 
     // 读取乡镇信息 query()
-    public List<Country> loadCountries() {
+    public List<Country> loadCountries(int cityId) {
         List<Country> list = new ArrayList<Country>();
-        Cursor cursor = db.query("CREATE_COUNTRY", null, null, null, null, null, null);
+        Cursor cursor = db.query("country", null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
             do {
                 Country country = new Country();

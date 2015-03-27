@@ -1,3 +1,4 @@
+//回调函数接口
 package com.example.coolweather.util;
 
 public interface HttpCallbackListener {

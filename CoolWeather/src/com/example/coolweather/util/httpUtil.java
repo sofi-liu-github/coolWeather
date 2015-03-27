@@ -1,3 +1,4 @@
+//与服务器交互的工具类
 package com.example.coolweather.util;
 
 import java.io.BufferedReader;

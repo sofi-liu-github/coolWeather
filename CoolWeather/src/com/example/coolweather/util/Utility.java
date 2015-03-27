@@ -1,3 +1,4 @@
+//处理服务器返回的省级/市级/县级信息
 package com.example.coolweather.util;
 
 import android.text.TextUtils;
@@ -19,6 +20,7 @@ public class Utility {
                     Province province = new Province();
                     province.setProvinceCode(allCity[0]);
                     province.setProvinceName(allCity[1]);
+                    //调用数据库帮助类的插入(insert())方法
                     db.saveProvince(province);
                 }
                 return true;
@@ -38,6 +40,7 @@ public class Utility {
                     city.setCityCode(allCountry[0]);
                     city.setCityName(allCountry[1]);
                     city.setProvinceId(ProvinceId);
+                    //调用数据库帮助类的插入(insert())方法
                     db.saveCity(city);
                 }
                 return true;
@@ -45,7 +48,7 @@ public class Utility {
         }
         return false;
     }
-
+    //解析处理服务器返回的城市信息，回调函数调用，当根据传入的代号和类型查询服务器的省/市/县数据queryFromServer
     public synchronized static boolean handleCountriesResponse(coolweatherDB db, String response, int CityId) {
         if (TextUtils.isEmpty(response)) {
             String[] allCountries = response.split(",");
@@ -56,6 +59,7 @@ public class Utility {
                     country.setCityId(CityId);
                     country.setCountryCode(s[0]);
                     country.setCountryName(s[1]);
+                    // 调用数据库帮助类的插入(insert())方法
                     db.saveCountry(country);
                 }
                 return true;
